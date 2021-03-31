@@ -20,6 +20,8 @@ services:
       - esdata1:/usr/share/elasticsearch/data
     ports:
       - 9200:9200
+    networks: 
+      - esnet
 
   kibana:
     image: docker.elastic.co/kibana/kibana:7.12.0
@@ -31,19 +33,30 @@ services:
     depends_on:
       - elasticsearch
 
-  news_headlines:
-    image: news_headlines
-    container_name: news_headlines
-    environment:
-      ELASTICSEARCH_URL: "http://elasticsearch:9200"
-      PORT: 3030
-    ports: 
-      - 3030:3030
-    depends_on:
-      - elasticsearch
+  # news_headlines:
+  #   image: node:14-alpine
+  #   container_name: news_headlines
+  #   build: .
+  #   environment:
+  #     ELASTICSEARCH_URL: "http://elasticsearch:9200"
+  #     PORT: 3500
+  #   volumes:
+  #     - .:/usr/src/app/headlines
+  #   ports: 
+  #     - 3500:3500
+  #   links:
+  #     - elasticsearch
+  #   depends_on:
+  #     - elasticsearch
+  #   command: npm run start
+  #   networks: 
+  #     - esnet
     
     
   
 volumes:
   esdata1:
     driver: local
+
+networks:
+  esnet:
