@@ -13,6 +13,23 @@ app.use('/', routes);
 const PORT = process.env.PORT || 3500;
 
 
+// Check if connected to ElasticSearch
+// async function checkConnection() {
+//     console.log("Checking connection to ElasticSearch...");
+//       let isConnected = false;
+//       while (!isConnected) {
+//         try {
+//           await client.cluster.health({});
+//           console.log("Successfully connected to ElasticSearch");
+//           isConnected = true;
+//         } catch (error) {
+//                console.error(error.message);
+//         }
+//       }
+//       return true;
+// }
+
+
 // Add documents from .json file to index 
 async function addDocs(file, indexName) {
     console.log('inside add Docs')
@@ -54,34 +71,16 @@ async function checkIndex(){
 }
 
 
-//
-// Registers a HTTP GET route for search
-//
-// app.get("/news_headlines/get", async (req, res) => {
-//     const searchQuery = req
-//     console.log(searchQuery)
-//     // try {
-//     //     const result = await 
-//     // } catch (error) {
-        
-//     // }
-    
-//     //     const documents = searchResults.body.hits.hits
-    
-//     //     // for (const doc of documents){
-//     //     //     console.log(doc._source)
-//     //     // }
-//     //     res.json(documents)
-// })
-
 
 async function main(){
-    // await client.indices.delete({index: 'news_headlines'});
-    await checkIndex();
-    app.listen(PORT, () => {
-        console.log(`Microservice listening on PORT ${PORT}, point your browser at http://localhost:${PORT}/`);
-    });
-    
+    // const isElasticReady = await checkConnection();
+    // if (isElasticReady){
+        // await client.indices.delete({index: 'news_headlines'});
+        await checkIndex();
+        app.listen(PORT, () => {
+            console.log(`Microservice listening on PORT ${PORT}, point your browser at http://localhost:${PORT}/`);
+        });
+    // }
 }
 
 main();
