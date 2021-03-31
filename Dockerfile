@@ -1,11 +1,11 @@
-FROM node:14
+FROM node:14-alpine
 
-WORKDIR /usr/app
+WORKDIR /usr/src/app
 COPY package*.json ./
-COPY ./src .
+COPY . ./
 
 RUN npm install
 
-CMD [ "node", "index.js"]
+CMD npm run start
 
 
