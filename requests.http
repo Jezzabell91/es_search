@@ -1,0 +1,22 @@
+# Simple Query
+http://localhost:3500/news_headlines/?q=volcano
+
+###
+# Simple Query With And 
+http://localhost:3500/news_headlines/?q=volcano+lava
+
+###
+# Simple Query With Exclusion
+http://localhost:3500/news_headlines/?q=Ecuador+-Volcano
+
+###
+# Search With AND operator
+http://localhost:3500/news_headlines/Ecuador+Volcano/
+
+###
+# Search with OR operator
+http://localhost:3500/news_headlines/Ecuador|Volcano/
+
+###
+# Search headlines field without using simple
+http://localhost:3500/news_headlines/search/netflix+amazon
