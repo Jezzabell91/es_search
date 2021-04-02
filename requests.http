@@ -1,9 +1,9 @@
 # Simple Query
-http://localhost:3500/news_headlines/?q=volcano
+http://localhost:3500/news_headlines/?q=volcano&excluded=water
 
 ###
 # Simple Query With And 
-http://localhost:3500/news_headlines/?q=volcano+lava
+http://localhost:3500/news_headlines/?q=RedDancingGiraffe+"Jeremy Bell"
 
 ###
 # Simple Query With Exclusion
@@ -20,3 +20,18 @@ http://localhost:3500/news_headlines/Ecuador|Volcano/
 ###
 # Search headlines field without using simple
 http://localhost:3500/news_headlines/search/netflix+amazon
+
+###
+# Create a new document
+POST http://localhost:3500/news_headlines/new HTTP/1.1
+content-type: application/json
+
+###
+# Update a document using id as parameter
+PATCH http://localhost:3500/news_headlines/update/tjy1i3gBFynsfXJyCTmS HTTP/1.1
+content-type: application/json
+
+###
+# Delete a document using id as parameter
+DELETE http://localhost:3500/news_headlines/remove/szyui3gBFynsfXJyrjl1 HTTP/1.1
+content-type: application/json
