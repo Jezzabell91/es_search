@@ -4,9 +4,8 @@
 
 1. Run Docker Desktop in windows
 2. In linux terminal run the command ```sysctl -w vm.max_map_count=262144``` , you may need to use sudo if you're not the root user
-3. Then do ```docker-compose up``` to start the elasticsearch server and kibana 
-4. Do ```npm install```
-5. Start with ```npm start```
+3. Then do ```docker-compose up --build``` to start the elasticsearch server, kibana, and the express REST API  
+
 
 All Services Should Be working now. 
 
