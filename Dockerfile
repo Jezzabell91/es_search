@@ -1,11 +1,9 @@
-FROM node:14-alpine
+FROM node:14
 
 WORKDIR /usr/src/app
 COPY package*.json ./
-COPY . ./
+RUN npm install --only=production
+COPY ./src ./src
 
-RUN npm install
-
-CMD npm run start
-
-
+CMD npx wait-port http://elasticsearch:9200 &&\
+    npm start

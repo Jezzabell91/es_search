@@ -1,4 +1,4 @@
-version: '2.2'
+version: '3'
 
 services:
 
@@ -16,12 +16,11 @@ services:
       memlock:
         soft: -1
         hard: -1
-    volumes:
-      - esdata1:/usr/share/elasticsearch/data
+    # volumes:
+    #   - esdata1:/usr/share/elasticsearch/data
     ports:
       - 9200:9200
-    networks: 
-      - esnet
+
 
   kibana:
     image: docker.elastic.co/kibana/kibana:7.12.0
@@ -34,29 +33,22 @@ services:
       - elasticsearch
 
   # news_headlines:
-  #   image: node:14-alpine
+  #   image: news_headlines
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile
   #   container_name: news_headlines
-  #   build: .
+  #   ports:
+  #     - "3500:3500"
   #   environment:
-  #     ELASTICSEARCH_URL: "http://elasticsearch:9200"
-  #     PORT: 3500
-  #   volumes:
-  #     - .:/usr/src/app/headlines
-  #   ports: 
-  #     - 3500:3500
-  #   links:
-  #     - elasticsearch
+  #     - PORT=3500
+  #     - ELASTICSEARCH_URL=http://elasticsearch:9200
+  #   restart: "no"
   #   depends_on:
   #     - elasticsearch
-  #   command: npm run start
-  #   networks: 
-  #     - esnet
-    
     
   
-volumes:
-  esdata1:
-    driver: local
+# volumes:
+#   esdata1:
+#     driver: local
 
-networks:
-  esnet:
