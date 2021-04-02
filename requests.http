@@ -3,7 +3,7 @@ http://localhost:3500/news_headlines/?q=volcano&excluded=water
 
 ###
 # Simple Query With And 
-http://localhost:3500/news_headlines/?q=RedDancingGiraffe+"Jeremy Bell"
+http://localhost:3500/news_headlines/?q=RedDancingGiraffe+"Test User"
 
 ###
 # Simple Query With Exclusion
@@ -28,10 +28,10 @@ content-type: application/json
 
 ###
 # Update a document using id as parameter
-PATCH http://localhost:3500/news_headlines/update/tjy1i3gBFynsfXJyCTmS HTTP/1.1
+PATCH http://localhost:3500/news_headlines/update/<id> HTTP/1.1
 content-type: application/json
 
 ###
 # Delete a document using id as parameter
-DELETE http://localhost:3500/news_headlines/remove/szyui3gBFynsfXJyrjl1 HTTP/1.1
+DELETE http://localhost:3500/news_headlines/remove/<id> HTTP/1.1
 content-type: application/json

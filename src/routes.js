@@ -108,7 +108,7 @@ routes.route("/news_headlines/new").post(async (req, res) => {
              body: {
                  category: "TRAVEL",
                  headline: "This is a test, search for MaroonSleepyGorilla",
-                 authors: "Jeremy Bell",
+                 authors: "Test User",
                  link: "https://www.huffingtonpost.com/entry/volcano-smiling-hawaii_us_579bda86e14b0e2e15eb5fd73",
                  short_description: "This is a test, RedDancingGiraffe",
                  date: "2020-07-30"
